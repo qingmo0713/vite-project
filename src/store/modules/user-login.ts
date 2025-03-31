@@ -1,19 +1,19 @@
 import { defineStore } from "pinia";
+import { ref } from "vue";
 import { GET_TOKEN, SET_TOKEN, REMOVE_TOKEN } from "@/utils/user";
 import { resPhoneCode, reqUserLogin } from "@/api/hospital/index";
 import type { LoginData, UserLoginResponseData } from "@/api/hospital/type";
 
 const useUserStore = defineStore("User", () => {
   let visiable = false;
-  let code = ""; //存储用户的验证码
-  let userInfo = JSON.parse(GET_TOKEN() as string) || {};
+  let code = ref(""); //存储用户的验证码
+  let userInfo = ref(JSON.parse(GET_TOKEN() as string) || {});
 
   //获取验证码的方法
   const getCode = async (phone: string) => {
     let result: any = await resPhoneCode(phone);
     if (result.code == 200) {
-      code = result.data;
-      return "ok";
+      code.value = result.data;
     } else {
       return Promise.reject(new Error(result.message));
     }
@@ -24,9 +24,9 @@ const useUserStore = defineStore("User", () => {
     //登录请求
     let result: UserLoginResponseData = await reqUserLogin(loginData);
     if (result.code == 200) {
-      userInfo = result.data;
+      userInfo.value = result.data;
       //本地存储持久化存储用户信息
-      SET_TOKEN(JSON.stringify(userInfo));
+      SET_TOKEN(JSON.stringify(userInfo.value));
       //返回一个成功的Promise
       return "ok";
     } else {
@@ -36,7 +36,7 @@ const useUserStore = defineStore("User", () => {
   //退出登录方法
   const logout = () => {
     //清空仓库的数据
-    userInfo = { name: "", token: "" };
+    userInfo.value = { name: "", token: "" };
     //清空本地存储的数据
     REMOVE_TOKEN();
   };
