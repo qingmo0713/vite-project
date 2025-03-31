@@ -4,7 +4,6 @@ import { resHospitalRegistration, resHospitalDepartment } from "@/api/hospital";
 import type {
   HospitalInfo,
   HospitalInfoData,
-  department,
   HospitalDepartment,
   DepartmentArr,
 } from "@/api/hospital/type";

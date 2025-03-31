@@ -5,12 +5,14 @@
       <router-view></router-view>
     </div>
     <HospitalBottom />
+    <Login />
   </div>
 </template>
 
 <script setup lang="ts" name="">
 import HospitalTop from "@/components/hospital_top/index.vue";
 import HospitalBottom from "@/components/hospital_bottom/index.vue";
+import Login from "@/components/Login/index.vue";
 </script>
 
 <style scoped lang="scss">

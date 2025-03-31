@@ -39,6 +39,47 @@ export default createRouter({
       ],
     },
     {
+      path: "/user",
+      component: () => import("@/pages/user/index.vue"),
+      children: [
+        {
+          path: "certification",
+          component: () => import("@/pages/user/certification.vue"),
+          meta: {
+            title: "实名认证",
+          },
+        },
+        {
+          path: "order",
+          component: () => import("@/pages/user/order.vue"),
+          meta: {
+            title: "挂号订单",
+          },
+        },
+        {
+          path: "patient",
+          component: () => import("@/pages/user/patient.vue"),
+          meta: {
+            title: "就诊人管理",
+          },
+        },
+        {
+          path: "profile",
+          component: () => import("@/pages/user/profile.vue"),
+          meta: {
+            title: "账号信息",
+          },
+        },
+        {
+          path: "feedback",
+          component: () => import("@/pages/user/feedback.vue"),
+          meta: {
+            title: "信息反馈",
+          },
+        },
+      ],
+    },
+    {
       path: "/",
       redirect: "/home",
     },
