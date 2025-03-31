@@ -45,8 +45,8 @@ import { useRouter } from "vue-router";
 import { Search } from "@element-plus/icons-vue";
 import Hospital_Left from "@/pages/home/Hospital_Left.vue";
 import Hospital_Right from "@/pages/home/Hospital_Right.vue";
-import type { HospitalInfo } from "@/api/type";
-import { reqHospitalInfo } from "@/api";
+import type { HospitalInfo } from "@/api/home/type";
+import { reqHospitalInfo } from "@/api/home/index";
 let hospitalName = ref("");
 let $router = useRouter();
 
@@ -68,7 +68,10 @@ const search = () => {
 
 // 搜索选项点击
 const handleSelect = (item: Record<string, any>) => {
-  $router.push({ path: "/hospital" });
+  $router.push({
+    path: "/hospital/registration",
+    query: { hoscode: item.hoscode },
+  });
 };
 
 onMounted(() => {});

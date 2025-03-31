@@ -1,5 +1,5 @@
 <template>
-  <el-card style="width: 48%" shadow="hover">
+  <el-card style="width: 48%" shadow="hover" @click="goHospital">
     <div class="hospital_card_item">
       <div class="hospital_card_item_left">
         <div class="hospital_card_item_left_name">
@@ -69,7 +69,17 @@
 </template>
 
 <script setup lang="ts" name="Hospital_card">
-defineProps(["cardList"]);
+import { useRouter } from "vue-router";
+let $router = useRouter();
+let props = defineProps(["cardList"]);
+function goHospital() {
+  $router.push({
+    path: "/hospital/registration",
+    query: {
+      hoscode: props.cardList.hoscode,
+    },
+  });
+}
 </script>
 
 <style scoped lang="scss">

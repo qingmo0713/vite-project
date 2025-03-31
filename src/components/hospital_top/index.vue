@@ -1,7 +1,7 @@
 <template>
   <div class="HospitalTop">
     <div class="main">
-      <div class="left">
+      <div class="left" @click="goHome">
         <img src="../../assets/images/logo.png" class="img" alt="" />
         <div class="txt">尚医通 预约挂号统一平台</div>
       </div>
@@ -13,7 +13,13 @@
   </div>
 </template>
 
-<script setup lang="ts" name="HospitalTop"></script>
+<script setup lang="ts" name="HospitalTop">
+import { useRouter } from "vue-router";
+let $router = useRouter();
+function goHome() {
+  $router.push({ path: "/home" });
+}
+</script>
 
 <style scoped lang="scss">
 .HospitalTop {
@@ -34,6 +40,7 @@
     .left {
       display: flex;
       align-items: center;
+      cursor: pointer;
       .img {
         width: 50px;
         height: 50px;

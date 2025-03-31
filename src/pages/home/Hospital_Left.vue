@@ -36,18 +36,18 @@
 
 <script setup lang="ts" name="Hospital_Left">
 import { ref, onMounted, reactive } from "vue";
-import Hospital_level from "@/components/Hospital_Left/Hospital_level.vue";
-import Hospital_city from "@/components/Hospital_Left/Hospital_city.vue";
-import Hospital_card from "@/components/Hospital_Left/Hospital_card.vue";
+import Hospital_level from "@/components/Hospital_Home/Hospital_level.vue";
+import Hospital_city from "@/components/Hospital_Home/Hospital_city.vue";
+import Hospital_card from "@/components/Hospital_Home/Hospital_card.vue";
 
 import type {
   HospitalLevelAndRegionResponseData,
   HospitalLevelAndRegionArr,
   Content,
   HospitalResponseData,
-} from "@/api/type";
+} from "@/api/home/type";
 
-import { reqHospitalLevelAndRegion, reqHospital } from "@/api";
+import { reqHospitalLevelAndRegion, reqHospital } from "@/api/home/index";
 
 // 等级数据
 let level = ref<HospitalLevelAndRegionArr>([]);
