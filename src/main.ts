@@ -4,6 +4,8 @@ import App from "./App.vue";
 import router from "@/router";
 
 import "@/style/index.scss";
+//引入路由鉴权的文件
+import "./permisstion";
 
 import ElementPlus from "element-plus";
 import "element-plus/dist/index.css";

@@ -36,6 +36,22 @@ export default createRouter({
           component: () =>
             import("@/components/Hospital_Info/stop_diagnosis_information.vue"),
         },
+        {
+          path: "register_step1",
+          component: () =>
+            import("@/components/Hospital_Info/register_step1.vue"),
+          meta: {
+            title: "预约第一步",
+          },
+        },
+        {
+          path: "register_step2",
+          component: () =>
+            import("@/components/Hospital_Info/register_step2.vue"),
+          meta: {
+            title: "预约第二步",
+          },
+        },
       ],
     },
     {

@@ -52,7 +52,7 @@ export interface HospitalInfo extends ResponseData {
 export interface department {
   depcode: string;
   depname: string;
-  children?: DepartmentArr[];
+  children?: department[];
 }
 
 export type DepartmentArr = department[];

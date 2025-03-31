@@ -5,7 +5,7 @@
       <router-view></router-view>
     </div>
     <HospitalBottom />
-    <Login />
+    <Login v-if="userStore.visiable" />
   </div>
 </template>
 
@@ -13,6 +13,8 @@
 import HospitalTop from "@/components/hospital_top/index.vue";
 import HospitalBottom from "@/components/hospital_bottom/index.vue";
 import Login from "@/components/Login/index.vue";
+import useUserStore from "@/store/modules/user-login";
+let userStore = useUserStore();
 </script>
 
 <style scoped lang="scss">

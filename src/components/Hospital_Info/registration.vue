@@ -122,10 +122,10 @@ const changeIndex = (index: number) => {
 const showLogin = (item: any) => {
   //点击某一个医院科室按钮，进入到相应的预约挂号详情页面
   //跳转到预约挂号详情页面
-  // $router.push({
-  //   path: "/hospital/register_step1",
-  //   query: { hoscode: $route.query.hoscode, depcode: item.depcode },
-  // });
+  $router.push({
+    path: "/hospital/register_step1",
+    query: { hoscode: $route.query.hoscode, depcode: item.depcode },
+  });
 };
 let registrationStore = useDetailStore();
 
