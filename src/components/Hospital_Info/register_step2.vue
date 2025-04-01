@@ -7,7 +7,9 @@
       <template #header>
         <div class="card-header">
           <span>请选择就诊人</span>
-          <el-button type="primary" size="default" :icon="User" @click="goUser">添加就诊人</el-button>
+          <el-button type="primary" size="default" :icon="User" @click="goUser"
+            >添加就诊人</el-button
+          >
         </div>
       </template>
       <!-- 卡片的身体部分展示就诊人信息 -->
@@ -94,10 +96,14 @@
 import { User } from "@element-plus/icons-vue";
 //引入获取就诊人信息接口
 import { reqGetUser, reqDoctorInfo } from "@/api/hospital";
-import { reqSubmitOrder } from "@/api/user";
+import { reqSubmitOrder } from "@/api/user/index";
 import type { SubmitOrder } from "@/api/user/type";
 import { onMounted, ref } from "vue";
-import type { UserResponseData, UserArr, DoctorInfoData } from "@/api/hospital/type";
+import type {
+  UserResponseData,
+  UserArr,
+  DoctorInfoData,
+} from "@/api/hospital/type";
 import { useRoute, useRouter } from "vue-router";
 //@ts-ignore
 import { ElMessage } from "element-plus";
@@ -130,7 +136,9 @@ const fetchUserData = async () => {
 };
 //获取医生的信息
 const fetchInfo = async () => {
-  let result: DoctorInfoData = await reqDoctorInfo($route.query.docId as string);
+  let result: DoctorInfoData = await reqDoctorInfo(
+    $route.query.docId as string,
+  );
   if (result.code == 200) {
     docInfo.value = result.data;
   }
@@ -151,7 +159,11 @@ const submitOrder = async () => {
   //就诊人的ID
   let patientId = userArr.value[currentIndex.value].id;
   //提交订单
-  let result: SubmitOrder = await reqSubmitOrder(hoscode, scheduleId, patientId);
+  let result: SubmitOrder = await reqSubmitOrder(
+    hoscode,
+    scheduleId,
+    patientId,
+  );
   //提交订单成功
   if (result.code == 200) {
     $router.push({ path: "/user/order", query: { orderId: result.data } });
@@ -164,10 +176,10 @@ const submitOrder = async () => {
 };
 
 //预约挂号添加就诊人按钮的方法
-const goUser = ()=>{
-   //路由跳转
-   $router.push({path:'/user/patient',query:{type:'add'}})
-}
+const goUser = () => {
+  //路由跳转
+  $router.push({ path: "/user/patient", query: { type: "add" } });
+};
 </script>
 
 <style scoped lang="scss">

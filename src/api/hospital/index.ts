@@ -8,6 +8,8 @@ import type {
   WXLoginResponseData,
   HospitalWordData,
   DoctorResponseData,
+  UserResponseData,
+  DoctorInfoData,
 } from "./type";
 
 enum API {
@@ -72,3 +74,11 @@ export const reqHospitalDoctor = (
   request.get<any, DoctorResponseData>(
     API.HOSPITALDOCTOR_URL + `${hoscode}/${depcode}/${workDate}`,
   );
+
+//获取某一个账号下就诊人信息
+export const reqGetUser = () =>
+  request.get<any, UserResponseData>(API.GETUSER_URL);
+
+//获取挂号医生的信息
+export const reqDoctorInfo = (scheduleId: string) =>
+  request.get<any, DoctorInfoData>(API.GETDOCTOR_URL + scheduleId);
