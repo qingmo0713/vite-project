@@ -79,7 +79,7 @@
               <div class="webchat" v-show="scene == 1">
                 <!-- 在这个容器当中显示微信扫码登录页面 -->
                 <div id="login_container"></div>
-                <div class="phone" @click="handler">
+                <div class="bottom" @click="handler">
                   <p>手机短信验证码登录</p>
                   <svg
                     t="1685676069573"
