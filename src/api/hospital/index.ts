@@ -72,7 +72,7 @@ export const reqHospitalDoctor = (
   workDate: string,
 ) =>
   request.get<any, DoctorResponseData>(
-    API.HOSPITALDOCTOR_URL + `${hoscode}/${depcode}/${workDate}`,
+    API.HOSPITALDOCTOR_URL + `${hoscode}/${depcode}/2024-11-11`,
   );
 
 //获取某一个账号下就诊人信息

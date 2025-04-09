@@ -79,15 +79,10 @@ export const reqCertationType = (CertificatesType = "CertificatesType") =>
 export const reqUserCertation = (data: UserParams) =>
   request.post<any, any>(API.USERCERTATION_URL, data);
 //获取订单数据接口
-export const reqUserOrderInfo = (
-  page: number,
-  limit: number,
-  patientId: string,
-  orderStatus: string,
-) =>
+export const reqUserOrderInfo = (params: any) =>
   request.get<any, UserOrderInfoResponseData>(
     API.USERORDERINFO_URL +
-      `${page}/${limit}?patientId=${patientId}&orderStatus=${orderStatus}`,
+      `${params.page}/${params.limit}?patientId=${params.patientId}&orderStatus=${params.orderStatus}`,
   );
 //获取全部就诊人的信息
 export const reqAllUser = () =>
